@@ -39,4 +39,4 @@ Number: 90.0
 Number: 100.0
   Binary: 1100100
   Hexadecimal: 64
-Time elapsed: 0.000181 seconds
+Time elapsed: 0.000178 seconds

@@ -3,7 +3,7 @@
 En esta carpeta se guarda la evidencia de corridas exitosas del programa **wordCount** (P3).
 
 - **WordCountResults.txt**: salida generada (palabras distintas, frecuencia, tiempo de ejecución).
-- **Capturas de pantalla**: se aceptan capturas de los resultados exitosos en lugar de un PDF.
+- **Capturas de pantalla**: capturas de pantalla de los resultados exitosos.
 
 ## Cómo generar evidencia
 

@@ -8,4 +8,4 @@ world: 2
 
 Total distinct words: 5
 Total words: 9
-Time elapsed: 0.000349 seconds
+Time elapsed: 0.000155 seconds

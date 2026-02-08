@@ -6,4 +6,4 @@ Mediana: 55.0
 Moda: 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0
 Varianza Poblacional: 825.0
 Desviacion Estandar Poblacional: 28.722813232690143
-Time elapsed: 0.000153 seconds
+Time elapsed: 0.000182 seconds
