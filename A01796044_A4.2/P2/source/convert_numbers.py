@@ -5,7 +5,9 @@ Convert numbers from a file to binary and hexadecimal using basic algorithms.
 
 import os
 import sys
-import time
+
+from utils.parse_numbers import read_and_parse_numbers
+from utils.run_main import run_timed_main
 
 HEX_DIGITS = "0123456789ABCDEF"
 
@@ -40,34 +42,12 @@ def to_hexadecimal(num):
     return "".join(digits)
 
 
-def parse_numbers(lines):
-    """Parse lines into valid numbers, return (numbers_list, errors_list)."""
-    numbers = []
-    errors = []
-    for line_num, line in enumerate(lines, start=1):
-        line = line.strip()
-        if not line:
-            continue
-        try:
-            value = float(line)
-            numbers.append(value)
-        except ValueError:
-            msg = f"Error in line {line_num}: invalid data '{line}'"
-            errors.append(msg)
-            print(msg, file=sys.stderr)
-    return numbers, errors
-
-
 def run_conversions(input_path):
     """
     Read file, convert each number to binary and hex.
     Return (results_text, success). Caller appends elapsed time.
     """
-    with open(input_path, "r", encoding="utf-8") as file:
-        lines = file.readlines()
-
-    numbers, _ = parse_numbers(lines)
-
+    numbers, _ = read_and_parse_numbers(input_path)
     if not numbers:
         return "No valid numbers found in file.\n", False
 
@@ -86,7 +66,10 @@ def run_conversions(input_path):
 def main():
     """Entry point: parse args, run conversions, write output and time."""
     if len(sys.argv) < 2:
-        print("Usage: python convertNumbers.py fileWithData.txt [output_dir]", file=sys.stderr)
+        print(
+            "Usage: python convert_numbers.py fileWithData.txt [output_dir]",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     input_path = sys.argv[1]
@@ -94,28 +77,7 @@ def main():
     out_file = "ConvertionResults.txt"
     output_path = os.path.join(output_dir, out_file) if output_dir else out_file
 
-    try:
-        with open(input_path, "r", encoding="utf-8"):
-            pass
-    except FileNotFoundError:
-        print(f"Error: File not found: {input_path}", file=sys.stderr)
-        sys.exit(1)
-    except OSError as err:
-        print(f"Error reading file: {err}", file=sys.stderr)
-        sys.exit(1)
-
-    start = time.perf_counter()
-    results_text, success = run_conversions(input_path)
-    elapsed = time.perf_counter() - start
-
-    time_line = f"Time elapsed: {elapsed:.6f} seconds"
-    full_output = results_text + time_line + "\n"
-
-    with open(output_path, "w", encoding="utf-8") as out_file:
-        out_file.write(full_output)
-
-    print(full_output)
-    sys.exit(0 if success else 1)
+    run_timed_main(run_conversions, input_path, output_path)
 
 
 if __name__ == "__main__":

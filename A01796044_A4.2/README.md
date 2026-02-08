@@ -11,16 +11,16 @@ Actividad 4.2 – Ejercicios de programación (Pruebas de Software y Aseguramien
 
 ```bash
 # P1 – Estadísticas (media, moda, mediana, varianza poblacional, desv. estándar poblacional)
-cd P1/source
-python computeStatistics.py ../../data/numbers.txt ../results
+
+python P1/source/compute_statistics.py ../../data/numbers.txt ../results
 
 # P2 – Conversión a binario y hexadecimal
-cd P2/source
-python convertNumbers.py ../../data/numbers.txt ../results
+
+python P2/source/convert_numbers.py ../../data/numbers.txt ../results
 
 # P3 – Conteo de palabras
-cd P3/source
-python wordCount.py ../../data/words.txt ../results
+
+python P3/source/word_count.py ../../data/words.txt ../results
 ```
 
 El segundo argumento (`../results`) es opcional: si se omite, el archivo de resultados se escribe en el directorio actual.
@@ -30,16 +30,16 @@ El segundo argumento (`../results`) es opcional: si se omite, el archivo de resu
 Desde cada carpeta de tests:
 
 ```bash
-cd P1/tests && python -m unittest test_computeStatistics -v
-cd P2/tests && python -m unittest test_convertNumbers -v
-cd P3/tests && python -m unittest test_wordCount -v
+cd P1/tests && python -m unittest test_compute_statistics -v
+cd P2/tests && python -m unittest test_convert_numbers -v
+cd P3/tests && python -m unittest test_word_count -v
 ```
 
 ## PyLint
 
 ```bash
 pip install pylint
-pylint P1/source/computeStatistics.py P2/source/convertNumbers.py P3/source/wordCount.py
+pylint P1/source/compute_statistics.py P2/source/convert_numbers.py P3/source/word_count.py
 ```
 
 Se puede usar el archivo `.pylintrc` en la raíz para configurar reglas. Corregir todos los mensajes C, R, W, E y F que se deseen cumplir; después de cada cambio, ejecutar de nuevo las pruebas.

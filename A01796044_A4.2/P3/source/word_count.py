@@ -5,7 +5,8 @@ Count distinct words and their frequency from a file using basic algorithms.
 
 import os
 import sys
-import time
+
+from utils.run_main import run_timed_main
 
 
 def split_into_words(text):
@@ -63,7 +64,10 @@ def run_word_count(input_path):
 def main():
     """Entry point: parse args, run word count, write output and time."""
     if len(sys.argv) < 2:
-        print("Usage: python wordCount.py fileWithData.txt [output_dir]", file=sys.stderr)
+        print(
+            "Usage: python word_count.py fileWithData.txt [output_dir]",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     input_path = sys.argv[1]
@@ -71,28 +75,7 @@ def main():
     out_file = "WordCountResults.txt"
     output_path = os.path.join(output_dir, out_file) if output_dir else out_file
 
-    try:
-        with open(input_path, "r", encoding="utf-8"):
-            pass
-    except FileNotFoundError:
-        print(f"Error: File not found: {input_path}", file=sys.stderr)
-        sys.exit(1)
-    except OSError as err:
-        print(f"Error reading file: {err}", file=sys.stderr)
-        sys.exit(1)
-
-    start = time.perf_counter()
-    results_text, success = run_word_count(input_path)
-    elapsed = time.perf_counter() - start
-
-    time_line = f"Time elapsed: {elapsed:.6f} seconds"
-    full_output = results_text + time_line + "\n"
-
-    with open(output_path, "w", encoding="utf-8") as out_file:
-        out_file.write(full_output)
-
-    print(full_output)
-    sys.exit(0 if success else 1)
+    run_timed_main(run_word_count, input_path, output_path)
 
 
 if __name__ == "__main__":

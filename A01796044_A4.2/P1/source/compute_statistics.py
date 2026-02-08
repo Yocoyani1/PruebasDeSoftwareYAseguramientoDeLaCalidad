@@ -7,25 +7,12 @@ Algoritmos básicos (sin librerías de estadística).
 
 import os
 import sys
-import time
 
+from utils.parse_numbers import parse_numbers, read_and_parse_numbers
+from utils.run_main import run_timed_main
 
-def parse_numbers(lines):
-    """Parse lines into valid numbers, return (numbers_list, errors_list)."""
-    numbers = []
-    errors = []
-    for line_num, line in enumerate(lines, start=1):
-        line = line.strip()
-        if not line:
-            continue
-        try:
-            value = float(line)
-            numbers.append(value)
-        except ValueError:
-            msg = f"Error in line {line_num}: invalid data '{line}'"
-            errors.append(msg)
-            print(msg, file=sys.stderr)
-    return numbers, errors
+# Re-export for tests
+__all__ = ["parse_numbers", "compute_mean", "compute_median", "compute_mode"]
 
 
 def compute_mean(numbers):
@@ -95,11 +82,7 @@ def run_statistics(input_path):
     Read file, compute statistics, return (results_text, success).
     Elapsed time is appended to results_text by the caller.
     """
-    with open(input_path, "r", encoding="utf-8") as file:
-        lines = file.readlines()
-
-    numbers, _ = parse_numbers(lines)
-
+    numbers, _ = read_and_parse_numbers(input_path)
     if not numbers:
         return "No valid numbers found in file.\n", False
 
@@ -130,7 +113,10 @@ def run_statistics(input_path):
 def main():
     """Entry point: parse args, run statistics, write output and time."""
     if len(sys.argv) < 2:
-        print("Usage: python computeStatistics.py fileWithData.txt [output_dir]", file=sys.stderr)
+        print(
+            "Usage: python compute_statistics.py fileWithData.txt [output_dir]",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     input_path = sys.argv[1]
@@ -138,28 +124,7 @@ def main():
     out_file = "StatisticsResults.txt"
     output_path = os.path.join(output_dir, out_file) if output_dir else out_file
 
-    try:
-        with open(input_path, "r", encoding="utf-8"):
-            pass
-    except FileNotFoundError:
-        print(f"Error: File not found: {input_path}", file=sys.stderr)
-        sys.exit(1)
-    except OSError as err:
-        print(f"Error reading file: {err}", file=sys.stderr)
-        sys.exit(1)
-
-    start = time.perf_counter()
-    results_text, success = run_statistics(input_path)
-    elapsed = time.perf_counter() - start
-
-    time_line = f"Time elapsed: {elapsed:.6f} seconds"
-    full_output = results_text + time_line + "\n"
-
-    with open(output_path, "w", encoding="utf-8") as out_file:
-        out_file.write(full_output)
-
-    print(full_output)
-    sys.exit(0 if success else 1)
+    run_timed_main(run_statistics, input_path, output_path)
 
 
 if __name__ == "__main__":
