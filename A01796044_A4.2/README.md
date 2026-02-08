@@ -11,16 +11,16 @@ Actividad 4.2 – Ejercicios de programación (Pruebas de Software y Aseguramien
 
 ```bash
 # P1 – Estadísticas (media, moda, mediana, varianza poblacional, desv. estándar poblacional)
-
-python P1/source/compute_statistics.py ../../data/numbers.txt ../results
+cd P1/source
+python compute_statistics.py ../../data/numbers.txt ../results
 
 # P2 – Conversión a binario y hexadecimal
-
-python P2/source/convert_numbers.py ../../data/numbers.txt ../results
+cd P2/source
+python convert_numbers.py ../../data/numbers.txt ../results
 
 # P3 – Conteo de palabras
-
-python P3/source/word_count.py ../../data/words.txt ../results
+cd P3/source
+python word_count.py ../../data/words.txt ../results
 ```
 
 El segundo argumento (`../results`) es opcional: si se omite, el archivo de resultados se escribe en el directorio actual.

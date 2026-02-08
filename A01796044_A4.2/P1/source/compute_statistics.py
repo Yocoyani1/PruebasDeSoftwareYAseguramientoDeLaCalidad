@@ -13,8 +13,10 @@ _project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".
 if _project_root not in sys.path:
     sys.path.insert(0, _project_root)
 
+# pylint: disable=wrong-import-position
 from utils.parse_numbers import parse_numbers, read_and_parse_numbers
 from utils.run_main import run_timed_main
+# pylint: enable=wrong-import-position
 
 # Re-export for tests
 __all__ = ["parse_numbers", "compute_mean", "compute_median", "compute_mode"]

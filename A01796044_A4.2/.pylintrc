@@ -1,6 +1,8 @@
 [MASTER]
 ignore=test_
 jobs=0
+# So pylint can resolve 'utils' when run from project root
+init-hook='import sys, os; sys.path.insert(0, os.path.abspath("."))'
 
 [FORMAT]
 max-line-length=100
