@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+# Ignorar archivos de salida solo en la raíz (en 4.2/*/results/ sí se versionan como evidencia)
+/StatisticsResults.txt
+/ConvertionResults.txt
+/WordCountResults.txt
+.venv/
+venv/
+.env

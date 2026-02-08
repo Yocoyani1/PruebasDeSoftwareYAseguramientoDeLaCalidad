@@ -1,0 +1,42 @@
+Number to Binary and Hexadecimal
+========================================
+Number: 10.0
+  Binary: 1010
+  Hexadecimal: A
+
+Number: 20.0
+  Binary: 10100
+  Hexadecimal: 14
+
+Number: 30.0
+  Binary: 11110
+  Hexadecimal: 1E
+
+Number: 40.0
+  Binary: 101000
+  Hexadecimal: 28
+
+Number: 50.0
+  Binary: 110010
+  Hexadecimal: 32
+
+Number: 60.0
+  Binary: 111100
+  Hexadecimal: 3C
+
+Number: 70.0
+  Binary: 1000110
+  Hexadecimal: 46
+
+Number: 80.0
+  Binary: 1010000
+  Hexadecimal: 50
+
+Number: 90.0
+  Binary: 1011010
+  Hexadecimal: 5A
+
+Number: 100.0
+  Binary: 1100100
+  Hexadecimal: 64
+Time elapsed: 0.000181 seconds
