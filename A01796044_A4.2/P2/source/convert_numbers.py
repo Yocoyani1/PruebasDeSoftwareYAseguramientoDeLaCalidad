@@ -6,6 +6,11 @@ Convert numbers from a file to binary and hexadecimal using basic algorithms.
 import os
 import sys
 
+# Add project root to path so utils can be imported when run as script
+_project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if _project_root not in sys.path:
+    sys.path.insert(0, _project_root)
+
 from utils.parse_numbers import read_and_parse_numbers
 from utils.run_main import run_timed_main
 
