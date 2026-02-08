@@ -68,7 +68,8 @@ def main():
 
     input_path = sys.argv[1]
     output_dir = sys.argv[2] if len(sys.argv) >= 3 else ""
-    output_path = os.path.join(output_dir, "WordCountResults.txt") if output_dir else "WordCountResults.txt"
+    out_file = "WordCountResults.txt"
+    output_path = os.path.join(output_dir, out_file) if output_dir else out_file
 
     try:
         with open(input_path, "r", encoding="utf-8"):

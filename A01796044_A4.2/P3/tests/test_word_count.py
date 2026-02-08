@@ -8,7 +8,7 @@ import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "source"))
 
-import wordCount as wc
+import word_count as wc
 
 
 class TestSplitIntoWords(unittest.TestCase):

@@ -91,7 +91,8 @@ def main():
 
     input_path = sys.argv[1]
     output_dir = sys.argv[2] if len(sys.argv) >= 3 else ""
-    output_path = os.path.join(output_dir, "ConvertionResults.txt") if output_dir else "ConvertionResults.txt"
+    out_file = "ConvertionResults.txt"
+    output_path = os.path.join(output_dir, out_file) if output_dir else out_file
 
     try:
         with open(input_path, "r", encoding="utf-8"):

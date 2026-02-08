@@ -8,7 +8,7 @@ import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "source"))
 
-import convertNumbers as cn
+import convert_numbers as cn
 
 
 class TestToBinary(unittest.TestCase):

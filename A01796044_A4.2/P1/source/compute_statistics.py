@@ -59,8 +59,7 @@ def compute_mode(numbers):
         freq[num] = freq.get(num, 0) + 1
     max_count = 0
     for count in freq.values():
-        if count > max_count:
-            max_count = count
+        max_count = max(max_count, count)
     modes = [num for num, count in freq.items() if count == max_count]
     modes.sort()
     return modes[0] if len(modes) == 1 else modes
@@ -136,7 +135,8 @@ def main():
 
     input_path = sys.argv[1]
     output_dir = sys.argv[2] if len(sys.argv) >= 3 else ""
-    output_path = os.path.join(output_dir, "StatisticsResults.txt") if output_dir else "StatisticsResults.txt"
+    out_file = "StatisticsResults.txt"
+    output_path = os.path.join(output_dir, out_file) if output_dir else out_file
 
     try:
         with open(input_path, "r", encoding="utf-8"):

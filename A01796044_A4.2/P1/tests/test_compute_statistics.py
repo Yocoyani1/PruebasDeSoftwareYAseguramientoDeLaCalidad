@@ -8,7 +8,7 @@ import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "source"))
 
-import computeStatistics as cs
+import compute_statistics as cs
 
 
 class TestParseNumbers(unittest.TestCase):
