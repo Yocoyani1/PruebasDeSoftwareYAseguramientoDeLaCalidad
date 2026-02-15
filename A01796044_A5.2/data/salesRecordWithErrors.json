@@ -1,0 +1,9 @@
+[
+  {
+    "Sale": "Sale 001",
+    "Products": [
+      {"title": "Product A", "quantity": 2},
+      {"title": "Unknown Product", "quantity": 1}
+    ]
+  }
+]
