@@ -43,14 +43,20 @@ def build_price_map(catalogue_data):
 
     for idx, item in enumerate(catalogue_data):
         if not isinstance(item, dict):
-            errors.append(f"Catalog entry {idx + 1}: expected object, got {type(item).__name__}")
+            errors.append(
+                f"Catalog entry {idx + 1}: expected object,"
+                f" got {type(item).__name__}"
+            )
             continue
 
         title = item.get("title") or item.get("name") or item.get("product")
         price = item.get("price")
 
         if title is None or title == "":
-            errors.append(f"Catalog entry {idx + 1}: missing product title/name")
+            errors.append(
+                f"Catalog entry {idx + 1}: "
+                "missing product title/name"
+            )
             continue
 
         if price is None:
@@ -60,11 +66,17 @@ def build_price_map(catalogue_data):
         try:
             price_val = float(price)
         except (TypeError, ValueError):
-            errors.append(f"Catalog entry {idx + 1} ({title}): invalid price '{price}'")
+            errors.append(
+                f"Catalog entry {idx + 1} "
+                f"({title}): invalid price '{price}'"
+            )
             continue
 
         if price_val < 0:
-            errors.append(f"Catalog entry {idx + 1} ({title}): negative price {price_val}")
+            errors.append(
+                f"Catalog entry {idx + 1} "
+                f"({title}): negative price {price_val}"
+            )
             continue
 
         price_map[str(title).strip()] = price_val
@@ -79,9 +91,17 @@ def compute_sale_total(sale_item, price_map, sale_idx):
     errors = []
     total = 0.0
 
-    products = sale_item.get("Products") or sale_item.get("products") or sale_item.get("items")
+    products = (
+        sale_item.get("Products") or
+        sale_item.get("products") or
+        sale_item.get("items") or
+        sale_item.get("items")
+    )
     if products is None:
-        errors.append(f"Sale {sale_idx + 1}: missing Products/products/items array")
+        errors.append(
+            f"Sale {sale_idx + 1}: "
+            "missing Products/products/items array"
+        )
         return total, errors
 
     if not isinstance(products, list):
@@ -90,30 +110,45 @@ def compute_sale_total(sale_item, price_map, sale_idx):
 
     for pidx, prod in enumerate(products):
         if not isinstance(prod, dict):
-            errors.append(f"Sale {sale_idx + 1}, item {pidx + 1}: expected object")
+            errors.append(
+                f"Sale {sale_idx + 1}, "
+                f"item {pidx + 1}: expected object"
+            )
             continue
 
         title = prod.get("title") or prod.get("name") or prod.get("product")
         qty = prod.get("quantity") or prod.get("qty") or prod.get("amount", 1)
 
         if title is None or title == "":
-            errors.append(f"Sale {sale_idx + 1}, item {pidx + 1}: missing product title")
+            errors.append(
+                f"Sale {sale_idx + 1}, "
+                f"item {pidx + 1}: missing product title"
+            )
             continue
 
         try:
-            quantity = int(qty) if isinstance(qty, (int, float)) else int(float(qty))
+            quantity = int(float(qty))
         except (TypeError, ValueError):
-            msg = f"Sale {sale_idx + 1}, item {pidx + 1} ({title}): invalid quantity '{qty}'"
+            msg = (
+                f"Sale {sale_idx + 1}, "
+                f"item {pidx + 1} ({title}): invalid quantity '{qty}'"
+            )
             errors.append(msg)
             continue
 
         if quantity < 0:
-            errors.append(f"Sale {sale_idx + 1}, item {pidx + 1} ({title}): negative quantity")
+            errors.append(
+                f"Sale {sale_idx + 1}, "
+                f"item {pidx + 1} ({title}): negative quantity"
+            )
             continue
 
         title_str = str(title).strip()
         if title_str not in price_map:
-            msg = f"Sale {sale_idx + 1}, item {pidx + 1}: product '{title}' not in catalogue"
+            msg = (
+                f"Sale {sale_idx + 1}, item {pidx + 1}: "
+                f"product '{title}' not in catalogue"
+            )
             errors.append(msg)
             continue
 
@@ -153,10 +188,17 @@ def run_compute_sales(catalogue_path, sales_path):
 
     for idx, sale_item in enumerate(sales_data):
         if not isinstance(sale_item, dict):
-            all_errors.append(f"Sale record {idx + 1}: expected object, skipped")
+            all_errors.append(
+                f"Sale record {idx + 1}: "
+                "expected object, skipped"
+            )
             continue
 
-        sale_name = sale_item.get("Sale") or sale_item.get("sale") or f"Sale {idx + 1}"
+        sale_name = (
+            sale_item.get("Sale") or
+            sale_item.get("sale") or
+            f"Sale {idx + 1}"
+        )
         sale_total, sale_errors = compute_sale_total(sale_item, price_map, idx)
         all_errors.extend(sale_errors)
 
@@ -177,7 +219,10 @@ def run_compute_sales(catalogue_path, sales_path):
     ]
 
     if all_errors:
-        lines_out.extend(["Warnings/Errors (execution continued):", "-" * 40] + all_errors + [""])
+        lines_out.extend(
+            ["Warnings/Errors (execution continued):", "-" * 40] +
+            all_errors + [""]
+        )
 
     return "\n".join(lines_out), sale_num > 0 or grand_total > 0
 
@@ -186,7 +231,8 @@ def main():
     """Entry point: parse args, run compute sales, write output and time."""
     if len(sys.argv) < 3:
         print(
-            "Usage: python computeSales.py priceCatalogue.json salesRecord.json",
+            "Usage: python computeSales.py "
+            "priceCatalogue.json salesRecord.json",
             file=sys.stderr,
         )
         sys.exit(1)
@@ -195,10 +241,15 @@ def main():
     sales_path = sys.argv[2]
 
     if not os.path.isfile(catalogue_path):
-        print(f"Error: Catalogue file not found: {catalogue_path}", file=sys.stderr)
+        print(
+            "Error: "
+            f"Catalogue file not found: {catalogue_path}", file=sys.stderr
+        )
         sys.exit(1)
     if not os.path.isfile(sales_path):
-        print(f"Error: Sales file not found: {sales_path}", file=sys.stderr)
+        print(
+            f"Error: Sales file not found: {sales_path}", file=sys.stderr
+        )
         sys.exit(1)
 
     start = time.perf_counter()

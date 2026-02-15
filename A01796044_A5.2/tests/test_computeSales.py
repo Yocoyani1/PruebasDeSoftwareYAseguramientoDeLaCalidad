@@ -18,7 +18,9 @@ class TestLoadJsonFile(unittest.TestCase):
 
     def test_valid_json(self):
         """Load valid JSON returns data and None error."""
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".json", delete=False
+        ) as f:
             json.dump([{"title": "A", "price": 10}], f)
             path = f.name
         try:
@@ -36,7 +38,9 @@ class TestLoadJsonFile(unittest.TestCase):
 
     def test_invalid_json(self):
         """Invalid JSON returns error."""
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".json", delete=False
+        ) as f:
             f.write("{ invalid json }")
             path = f.name
         try:
@@ -109,7 +113,9 @@ class TestRunComputeSales(unittest.TestCase):
 
     def test_full_run_valid_data(self):
         """Full run with valid catalogue and sales produces correct output."""
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as cat_file:
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".json", delete=False
+        ) as cat_file:
             json.dump(
                 [
                     {"title": "Product A", "price": 10.50},
@@ -119,7 +125,9 @@ class TestRunComputeSales(unittest.TestCase):
             )
             cat_path = cat_file.name
 
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as sales_file:
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".json", delete=False
+        ) as sales_file:
             json.dump(
                 [
                     {
