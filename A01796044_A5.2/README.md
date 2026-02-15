@@ -75,14 +75,8 @@ A01796044_A5.2/
 │   └── salesRecord.json
 ├── tests/
 │   └── test_computeSales.py
-├── results/
-│   ├── SalesResults.txt
-│   ├── TestResults.txt
-│   ├── Flake8Results.txt
-│   └── PylintResults.txt
 ├── requirements.txt
 ├── .flake8
 ├── .pylintrc
-├── README.md
-└── DOCUMENTACION_RESULTADOS.md
+└── README.md
 ```
