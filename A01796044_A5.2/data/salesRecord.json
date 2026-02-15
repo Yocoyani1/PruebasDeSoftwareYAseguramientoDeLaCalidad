@@ -1,0 +1,23 @@
+[
+  {
+    "Sale": "Sale 001",
+    "Products": [
+      {"title": "Product A", "quantity": 2},
+      {"title": "Product B", "quantity": 1}
+    ]
+  },
+  {
+    "Sale": "Sale 002",
+    "Products": [
+      {"title": "Product C", "quantity": 5},
+      {"title": "Product D", "quantity": 1}
+    ]
+  },
+  {
+    "Sale": "Sale 003",
+    "Products": [
+      {"title": "Product A", "quantity": 3},
+      {"title": "Product E", "quantity": 10}
+    ]
+  }
+]
