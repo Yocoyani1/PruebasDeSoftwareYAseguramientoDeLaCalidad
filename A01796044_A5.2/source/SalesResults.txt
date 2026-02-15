@@ -1,0 +1,11 @@
+Sales Summary
+==================================================
+
+Total number of sales: 3
+Grand total: $217.35
+
+Details:
+  1. Sale 001: $46.00
+  2. Sale 002: $129.95
+  3. Sale 003: $41.40
+Time elapsed: 0.000357 seconds
