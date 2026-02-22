@@ -4,13 +4,20 @@
     "name": "Hotel Plaza",
     "address": "Av. Principal 100",
     "total_rooms": 50,
-    "reserved_rooms": 0
+    "reserved_rooms": 2
   },
   {
     "hotel_id": "H002",
     "name": "Hotel Central",
     "address": "Calle Secundaria 200",
     "total_rooms": 30,
-    "reserved_rooms": 0
+    "reserved_rooms": 1
+  },
+  {
+    "hotel_id": "H003",
+    "name": "Hotel Vista Mar",
+    "address": "Blvd. Costero 500",
+    "total_rooms": 15,
+    "reserved_rooms": 1
   }
 ]

@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "reservation_id": "R001",
+    "customer_id": "C001",
+    "hotel_id": "H001",
+    "room_number": "101",
+    "check_in": "2025-03-15",
+    "check_out": "2025-03-20",
+    "status": "active"
+  },
+  {
+    "reservation_id": "R002",
+    "customer_id": "C002",
+    "hotel_id": "H001",
+    "room_number": "202",
+    "check_in": "2025-03-22",
+    "check_out": "2025-03-25",
+    "status": "active"
+  },
+  {
+    "reservation_id": "R003",
+    "customer_id": "C001",
+    "hotel_id": "H002",
+    "room_number": "301",
+    "check_in": "2025-04-01",
+    "check_out": "2025-04-05",
+    "status": "active"
+  },
+  {
+    "reservation_id": "R004",
+    "customer_id": "C003",
+    "hotel_id": "H003",
+    "room_number": "405",
+    "check_in": "2025-04-10",
+    "check_out": "2025-04-12",
+    "status": "active"
+  }
+]
