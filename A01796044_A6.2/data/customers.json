@@ -1,0 +1,14 @@
+[
+  {
+    "customer_id": "C001",
+    "name": "Juan Pérez",
+    "email": "juan@email.com",
+    "phone": "555-1234"
+  },
+  {
+    "customer_id": "C002",
+    "name": "María García",
+    "email": "maria@email.com",
+    "phone": "555-5678"
+  }
+]
