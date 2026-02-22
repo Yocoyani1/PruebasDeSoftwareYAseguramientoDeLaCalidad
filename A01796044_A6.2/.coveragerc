@@ -1,0 +1,7 @@
+[run]
+source = .
+omit = tests/*,*/test_*,src/__main__.py
+
+[report]
+exclude_lines =
+    pragma: no cover
